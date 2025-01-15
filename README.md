@@ -1,6 +1,15 @@
 # spotify-playlist-to-gigperformer
 
-Generate a skeleton Gig Performer Gig File from a Spotify playlist.
+Generate a skeleton Gig Performer Gig file from a Spotify playlist. The Gig file contains
+
+* Gig Performer 5 format
+* Set list with each song from the Spotify playlist (to a max of 100 tracks)
+* Some metadata for the playlist in a comment in the Gig script
+* Each song has the name and artist(s)
+* GP defaults are used for tempo (120bpm), key (C major), time signature (4/4)
+
+Unfortunately, in late 2024 Spotify withdrew a "feature" API which contained very useful information such as key, time signature, tempo, style and more. They say they will launch something new and better - who knows! 
+
 
 ## Environment
 
@@ -23,7 +32,7 @@ Follow the [Getting started](https://developer.spotify.com/documentation/web-api
 
 `https://open.spotify.com/playlist/3Nl234a23rqsA8M6kCUNxi?si=9d3256cad99fca66`
 
-Step 3: From a MacOS terminal
+**Step 4**: From a MacOS terminal
 
 ```bash
 # Spotify API credentials
@@ -34,4 +43,9 @@ export SPOTIFY_CLIENT_KEY="4c5d6e**********************"
 node spotify-playlist-to-gigfile.js '<playlist-url>' > playlist.gig
 ```
 
-**Step 4**: Open the Gig file in Gig Performer
+notes:
+
+* You can change the output (`playlist.gig`) to a better filename like `best rock show of 2025.gig`
+* The single quotes around the URL are required for the standard Spotify URL (because of shell completion chars)
+
+**Step 5**: Open the Gig file in Gig Performer
