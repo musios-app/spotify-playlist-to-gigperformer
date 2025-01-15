@@ -15,11 +15,11 @@ Follow the [Getting started](https://developer.spotify.com/documentation/web-api
 
 ## Usage
 
-Step 1: Download the [spotify-playlist-to-gigfile.js](https://raw.githubusercontent.com/andrewjhunt/spotify-playlist-to-gigperformer/refs/heads/main/scripts/spotify-playlist-to-gigfile.js) Javascript.
+**Step 1**: Download [spotify-playlist-to-gigfile.js](https://raw.githubusercontent.com/andrewjhunt/spotify-playlist-to-gigperformer/refs/heads/main/scripts/spotify-playlist-to-gigfile.js?token=GHSAT0AAAAAAC5BQWVQIXWSLFRZM24QJXIGZ4HLEMQ) by following the `scripts` link above.
 
-Step 1: Copy the sharable URL for your Spotify playlist.
+**Step 2**: Copy the sharable URL for your Spotify playlist.
 
-Step 2: from the playlist use "..." then Share and "Copy link to Playlist". It will look something like this.
+**Step 3**: from the playlist use "..." then Share and "Copy link to Playlist". It will look something like this.
 
 `https://open.spotify.com/playlist/3Nl234a23rqsA8M6kCUNxi?si=9d3256cad99fca66`
 
@@ -34,4 +34,4 @@ export SPOTIFY_CLIENT_KEY="4c5d6e**********************"
 node spotify-playlist-to-gigfile.js '<playlist-url>' > playlist.gig
 ```
 
-Step 4: Open the Gig file in Gig Performer
+**Step 4**: Open the Gig file in Gig Performer
