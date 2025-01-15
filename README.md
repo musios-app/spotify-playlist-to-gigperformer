@@ -1,3 +1,12 @@
+---
+layout: default
+title: Spotify to Gig Performer
+description: Tool to generate a skeleton Gig Performer Gig file from a Spotify playlist
+gitrepo: https://github.com/musios-app/spotify-playlist-to-gigperformer
+tags: spotify gig-performer utility script playlist
+image: assets/images/spotify-icon.svg
+---
+
 # Spotify Playlist to Gig Performer converter
 
 The script generates a skeleton Gig Performer Gig file from a Spotify playlist. After negtoation a songlist with the bandmates, it makes the process of getting a GP rig going easier.
