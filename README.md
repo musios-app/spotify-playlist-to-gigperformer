@@ -1,15 +1,18 @@
-# spotify-playlist-to-gigperformer
+# Spotify Playlist to Gig Performer converter
 
-Generate a skeleton Gig Performer Gig file from a Spotify playlist. The Gig file contains
+The script generates a skeleton Gig Performer Gig file from a Spotify playlist. After negtoation a songlist with the bandmates, it makes the process of getting a GP rig going easier.
 
-* Gig Performer 5 format
+The Gig file contains:
+
 * Set list with each song from the Spotify playlist (to a max of 100 tracks)
 * Some metadata for the playlist in a comment in the Gig script
 * Each song has the name and artist(s)
 * GP defaults are used for tempo (120bpm), key (C major), time signature (4/4)
+* Gig Performer 5 format
 
 Unfortunately, in late 2024 Spotify withdrew a "feature" API which contained very useful information such as key, time signature, tempo, style and more. They say they will launch something new and better - who knows! 
 
+**This code is provided as-is because, although the Gig file, song file and other GP file formats are well-structured they are not documented.**
 
 ## Environment
 
