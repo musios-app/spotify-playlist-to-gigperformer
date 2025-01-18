@@ -4,7 +4,8 @@ title: Spotify Playlist to Gig Performer
 description: Tool to generate a skeleton Gig Performer Gig file from a Spotify playlist
 gitrepo: https://github.com/musios-app/spotify-playlist-to-gigperformer
 tags: spotify gig-performer utility script playlist
-image: assets/images/spotify-icon.svg
+icon: assets/images/spotify-icon.svg
+image: /projects/spotify-playlist-to-gigperformer/assets/images/og-spotify-playlist-to-gigperformer.svg
 ---
 
 # Spotify Playlist to Gig Performer converter
