@@ -44,7 +44,7 @@ Follow the [Getting started](https://developer.spotify.com/documentation/web-api
 
 ## Usage
 
-**Step 1**: Download [spotify-playlist-to-gigfile.js](https://raw.githubusercontent.com/andrewjhunt/spotify-playlist-to-gigperformer/refs/heads/main/scripts/spotify-playlist-to-gigfile.js?token=GHSAT0AAAAAAC5BQWVQIXWSLFRZM24QJXIGZ4HLEMQ) by following the `scripts` link above.
+**Step 1**: Download [spotify-playlist-to-gigfile.js](https://raw.githubusercontent.com/andrewjhunt/spotify-playlist-to-gigperformer/refs/heads/main/scripts/spotify-playlist-to-gigfile.js) by following the `scripts` link above.
 
 **Step 2**: Copy the sharable URL for your Spotify playlist. From the playlist use "..." then Share and "Copy link to Playlist". It will look something like this.
 
@@ -69,14 +69,16 @@ notes:
 **Step 4**: Open the Gig file in Gig Performer and build it out with your rackspaces.
 
 
-## Notes on a web version
+## Roadmap
 
-To make everything simpler, create a web page with the same functionality. The rough idea is 
+To make everything simpler, this should be a web page with the same functionality. The rough idea is 
 
 * User pastes the URL for the Spotify playlist into the page
 * The page retrieves the playlist data
   * Will need a Lambda service or similar because of CORS
   * Will only work for public playlists
 * Web page creates the XML Gig file with a Download button
-* Might also present the setlist as a table wit a CSV or Excel download
 * The page will not collect the users's setlist data
+* Extensions
+  * present the setlist as a table with a CSV or Excel download
+  * add other music sources
