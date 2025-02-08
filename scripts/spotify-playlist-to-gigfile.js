@@ -1,6 +1,9 @@
+// Retrieve details of a Spotify playlist and generate a Gig Performer gig file with the songs
+// Expects SPOTIFY_CLIENT_ID and SPOTIFY_CLIENT_KEY environment variables to be set
+// See musios.app for more details
+
 const path = require('path')
 const url = require('url')
-
 
 if (process.argv.length != 3) {
     console.error("ERROR: missing a Spotify playlist URL or playlist ID")
@@ -18,7 +21,6 @@ if (!process.env.SPOTIFY_CLIENT_ID || !process.env.SPOTIFY_CLIENT_KEY) {
     process.exit(1)
 }
 
-
 function escapeXml(unsafe) {
     return unsafe.replace(/[<>&'"]/g, function (c) {
         switch (c) {
@@ -30,7 +32,6 @@ function escapeXml(unsafe) {
         }
     });
 }
-
 
 function songXml(song) {
     const genRanHex = size => [...Array(size)].map(() => Math.floor(Math.random() * 16).toString(16)).join('');
@@ -112,7 +113,6 @@ function gigXml(playlist) {
     </SETLISTS>
 </GIGRACK>`
 }
-
 
 
 fetch('https://accounts.spotify.com/api/token', {
