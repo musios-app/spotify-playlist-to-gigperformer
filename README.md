@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Spotify Playlist to Gig Performer
+title: Spotify Playlist to Gig Performer .gig file
 description: Tool to generate a skeleton Gig Performer Gig file from a Spotify playlist
 gitrepo: https://github.com/musios-app/spotify-playlist-to-gigperformer
 tags: spotify gig-performer utility script playlist
-icon: assets/images/spotify-icon.svg
+icon: assets/images/spotify-playlist-to-gigperformer-icon.svg
 image: /projects/spotify-playlist-to-gigperformer/assets/images/og-spotify-playlist-to-gigperformer.svg
 ---
 
@@ -20,9 +20,16 @@ Author: Andrew Hunt ([musios.app](https://musios.app))
 Status: <span class="badge text-bg-warning">Prototype</span>
 
 
+<div class="image-wrapper row justify-content-center">
+    <a href="assets/images/spotify-playlist-to-gigperformer-icon.svg" data-toggle="lightbox" data-gallery="example-gallery">
+        <img src="assets/images/spotify-playlist-to-gigperformer-icon.svg" class="img-fluid maxh-300" style="max-width: 250px" alt="Spotify Playlist to Gig Performer converter icon"/>
+    </a>
+</div>
+
+
 ## Overview
 
-Do you work out your setlist in Spotify? This script generates a skeleton Gig Performer Gig file from a Spotify playlist. It's a timesaver if you've already built your rackspaces.  The Gig file is sparse but contains:
+Do you sort out your setlist in Spotify? This script generates a skeleton Gig Performer Gig file from a Spotify playlist. It's a timesaver if you've already built your rackspaces.  The Gig file is sparse but contains:
 
 * Set list with each song from the Spotify playlist (to a max of 100 tracks)
 * Some metadata for the playlist in a comment in the Gig script
