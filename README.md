@@ -71,6 +71,24 @@ export SPOTIFY_CLIENT_ID="1b2a3**********************"
 export SPOTIFY_CLIENT_KEY="4c5d6e**********************"
 ```
 
+### AWS Deployment
+
+Deploy to Lambda following [AWS instructions])(https://docs.aws.amazon.com/lambda/latest/dg/getting-started.html). 
+
+* AWS account required with an admin user account
+* Create a Lambda function
+* Upload `/assets/js/spotify-getplaylist.js` as the code
+* Add the Spotify credentials to the environment
+* Test the function in the console
+* Test externally with cURL:
+
+```bash
+export LAMBDA_URL="  https://hdu*************************hsdj.lambda-url.ap-southeast-2.on.aws"
+curl --request POST "${LAMBDA_URL}" \
+    --header "Content-Type: application/json" \
+    --data '{ "playlistId": "4OnxXeH9iH0BD8Ri7qZy9y" }'
+```
+
 ### Generating an XML Gig File (skeleton)
 
 `/assets/js/spotify-playlist-to-gigfile.js` transforms the Spotify playlist data to an Gig Performer Gig file. The output Gig file:
