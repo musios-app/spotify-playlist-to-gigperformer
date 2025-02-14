@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Spotify Playlist to Gig Performer .gig file
-description: Tool to generate a skeleton Gig Performer Gig file from a Spotify playlist
+description: Create skeleton Gig Performer Gig file from a Spotify playlist
 gitrepo: https://github.com/musios-app/spotify-playlist-to-gigperformer
 tags: spotify gig-performer utility script playlist
 icon: assets/images/spotify-playlist-to-gigperformer-icon.svg
@@ -9,21 +9,28 @@ image: /projects/spotify-playlist-to-gigperformer/assets/images/og-spotify-playl
 ---
 
 
+
 # Spotify Playlist to Gig Performer converter
 
-Github: [https://github.com/musios-app/spotify-playlist-to-gigperformer](https://github.com/musios-app/spotify-playlist-to-gigperformer)
-<br/>
-Licence: [Creative Commons CC0 1.0 Universal](LICENSE.txt)
-<br/>
-Author: Andrew Hunt ([musios.app](https://musios.app))
-<br/>
-Status: <span class="badge text-bg-warning">Prototype</span>
+Do you sort out your setlist in Spotify? This script generates a skeleton Gig Performer Gig file from a Spotify playlist. It's a timesaver if you've already built your rackspaces.
+
+<div class="btn-tool">
+  <a href="./tool">
+    <img src="assets/images/spotify-playlist-to-gigperformer-icon.svg" style="max-width: 250px" alt="Spotify Playlist to Gig Performer converter icon"/>
+    <br/>
+    <span class="h4">Open the converter</span>
+  </a>
+</div>
 
 
-<div class="image-wrapper row justify-content-center">
-    <a href="assets/images/spotify-playlist-to-gigperformer-icon.svg" data-toggle="lightbox" data-gallery="example-gallery">
-        <img src="assets/images/spotify-playlist-to-gigperformer-icon.svg" class="img-fluid maxh-300" style="max-width: 250px" alt="Spotify Playlist to Gig Performer converter icon"/>
-    </a>
+<div style="border-left: 2px solid #808080; padding-left: 16px">
+  Github: <a href="https://github.com/musios-app/spotify-playlist-to-gigperformer">https://github.com/musios-app/spotify-playlist-to-gigperformer</a>
+  <br/>
+  Licence: <a href="./LICENSE.txt">Creative Commons CC0 1.0 Universal</a>
+  <br/>
+  Author: Andrew Hunt (<a href="https://musios.app">https://musios.app</a>)
+  <br/>
+  Status: <span class="badge text-bg-warning">Beta</span>
 </div>
 
 
@@ -31,20 +38,20 @@ Status: <span class="badge text-bg-warning">Prototype</span>
 
 Do you sort out your setlist in Spotify? This script generates a skeleton Gig Performer Gig file from a Spotify playlist. It's a timesaver if you've already built your rackspaces.  The Gig file is sparse but contains:
 
-* Set list with each song from the Spotify playlist (to a max of 100 tracks)
+* Set list with each song from the Spotify playlist
 * Some metadata for the playlist in a comment in the Gig script
 * Each song has the name and artist(s)
 * GP defaults are used for tempo (120bpm), key (C major), time signature (4/4)
 * Gig Performer 5 Gig file format
 
+### Known Limitations & Issues
+
+* The tool needs better notification if the Spotify API request fails
+* Maximum of 100 tracks will be added to GP .gig file
+* Some Spotify playlist IDs are not supported by the Spotify playlist API
+* Unfortunately, in late 2024 Spotify withdrew it's "Feature" API which provided very useful information such as key, time signature, tempo, style and more. They say they will launch something new and better - who knows what or when. 
+
 **This code is provided as-is. The structure for GP's Gig file, song file and other file formats are clear but not documented and they recommend not manipulating the XML files.**
-
-**Notes**
-
-* This is a development version as a step towards an easier-to-use web page. It requires some development skills to use. If you can run `node` from a terminal then you're ok
-* You'll need to get Spotify API credentials (summary below). This won't be needed in a web version.
-
-Unfortunately, in late 2024 Spotify withdrew it's "Feature" API which contained very useful information such as key, time signature, tempo, style and more. They say they will launch something new and better - who knows what or when. 
 
 
 
@@ -90,11 +97,12 @@ Deploy to Lambda following [AWS instructions])(https://docs.aws.amazon.com/lambd
 * Test externally with cURL:
 
 ```bash
-export LAMBDA_URL="  https://hdu*************************hsdj.lambda-url.ap-southeast-2.on.aws"
+**export LAMBDA_URL="https://hdu*************************hsdj.lambda-url.ap-southeast-2.on.aws"
 curl --request POST "${LAMBDA_URL}" \
     --header "Content-Type: application/json" \
     --data '{ "playlistId": "4OnxXeH9iH0BD8Ri7qZy9y" }'
 ```
+
 
 ### Generating an XML Gig File (skeleton)
 
@@ -120,6 +128,30 @@ curl --request POST "${LAMBDA_URL}" \
     * Album name, release date, artists, ID and sharable URL
     * Spotify data (track id and sharable URL)
 
+### Web Site
+
+The tool is a static website built with React, Bootstrap, SCSS, vite.
+
+The process is roughly:
+
+1. User pastes a Spotify playlist share URL
+2. Parse and verify we can find a playlist ID
+3. Request the playlist details from the AWS Lambda service
+4. Lambda forwards the requests to the Spotify API
+5. Upon valid playlist response, 
+   1. Display a summary
+   2. Display a table with all the tracks
+   3. Show a Gig Performer summary and download button
+6. When GP .gig button in clicked, generate the XML and download
+
+```
+# Run locally for development
+npm run dev
+
+# Build static version
+npm run build
+```
+
 
 ### Environment
 
@@ -133,16 +165,22 @@ Developed and tested with:
   * Arc Version 1.81.0 (58533) on Chromium Engine Version 133.0.6943.54
 
 
-## Roadmap
+### Roadmap Ideas
 
-To make everything simpler, this should be a web page with the same functionality. The rough idea is 
+* Support a wider range of Spotify content: tracks, albums, Spotify-generated playlists
+* Allow the track list to be edited
+  * Reorder tracks
+  * Checkboxes to select inclusions
+  * Edit the BPM, time signature etc
 
-* User pastes the URL for the Spotify playlist into the page
-* The page retrieves the playlist data
-  * Will need a Lambda service or similar because of CORS
-  * Will only work for public playlists
-* Web page creates the XML Gig file with a Download button
-* The page will not collect the users's setlist data
-* Extensions
-  * present the setlist as a table with a CSV or Excel download
-  * add other music sources
+<style>
+  .btn-tool {
+    margin: 24px 48px;
+    text-align: center;
+    padding: 12px 24px;
+    width: fit-content;
+    border: 2px solid  #1ed760;
+    border-radius: 25px;
+    background-color: #1ed76040;
+  }
+</style>
