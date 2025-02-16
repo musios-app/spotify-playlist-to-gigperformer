@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Spotify Playlist to Gig Performer .gig file
-description: Create skeleton Gig Performer Gig file from a Spotify playlist
+description: Create skeleton Gig Performer Gig files from Spotify playlists
 gitrepo: https://github.com/musios-app/spotify-playlist-to-gigperformer
 tags: spotify gig-performer utility script playlist
 icon: assets/images/spotify-playlist-to-gigperformer-icon.svg
@@ -17,8 +17,8 @@ Do you sort out your setlist in Spotify? This script generates a skeleton Gig Pe
 <div class="btn-tool">
   <a href="./tool">
     <img src="assets/images/spotify-playlist-to-gigperformer-icon.svg" style="max-width: 250px" alt="Spotify Playlist to Gig Performer converter icon"/>
-    <br/>
-    <span class="h4">Open the converter</span>
+    
+    <p class="h4" style="margin: 12px 0px 0px 0px; color: green">Open the converter</p>
   </a>
 </div>
 
@@ -38,7 +38,7 @@ Do you sort out your setlist in Spotify? This script generates a skeleton Gig Pe
 
 Do you sort out your setlist in Spotify? This script generates a skeleton Gig Performer Gig file from a Spotify playlist. It's a timesaver if you've already built your rackspaces.  The Gig file is sparse but contains:
 
-* Set list with each song from the Spotify playlist
+* Set list with each song from the Spotify playlist. 
 * Some metadata for the playlist in a comment in the Gig script
 * Each song has the name and artist(s)
 * GP defaults are used for tempo (120bpm), key (C major), time signature (4/4)
@@ -46,6 +46,7 @@ Do you sort out your setlist in Spotify? This script generates a skeleton Gig Pe
 
 ### Known Limitations & Issues
 
+* Spotify will only return data for playlist owned by Spotify user. Spotify-curated playlists cannot be retrieved (however you can copy them into a new playlist and fetch that.)
 * The tool needs better notification if the Spotify API request fails
 * Maximum of 100 tracks will be added to GP .gig file
 * Some Spotify playlist IDs are not supported by the Spotify playlist API
@@ -93,6 +94,7 @@ Deploy to Lambda following [AWS instructions])(https://docs.aws.amazon.com/lambd
 * Create a Lambda function
 * Upload `/assets/js/spotify-getplaylist.js` as the code
 * Add the Spotify credentials to the environment
+* Configure the function for CORS (see image below)
 * Test the function in the console
 * Test externally with cURL:
 
@@ -102,6 +104,16 @@ curl --request POST "${LAMBDA_URL}" \
     --header "Content-Type: application/json" \
     --data '{ "playlistId": "4OnxXeH9iH0BD8Ri7qZy9y" }'
 ```
+
+
+<div class="image-wrapper row justify-content-center">
+    <a href="assets/images/lambda-config.png" data-toggle="lightbox" data-gallery="example-gallery">
+        <img src="assets/images/lambda-config.png" class="img-fluid maxh-250" alt="AWS Lambda configurtion"/>
+    </a>
+    <figcaption class="figure-caption text-center">AWS Lambda configurtion</figcaption>
+</div>
+
+
 
 
 ### Generating an XML Gig File (skeleton)
@@ -167,11 +179,12 @@ Developed and tested with:
 
 ### Roadmap Ideas
 
-* Support a wider range of Spotify content: tracks, albums, Spotify-generated playlists
+* Support a wider range of Spotify content such as individual tracks and albums
 * Allow the track list to be edited
   * Reorder tracks
   * Checkboxes to select inclusions
   * Edit the BPM, time signature etc
+* Is there a public database with song details such as BPM, key signature, time signature etc?
 
 <style>
   .btn-tool {
