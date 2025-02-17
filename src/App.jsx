@@ -40,7 +40,7 @@ function App() {
           <div className="row text-left w-100">
 
             <div className="col-8 text-start">
-              Note Spotify&apos;s limitations:
+              Spotify&apos;s limitations:
                 <li>Spotify only allows access to <b>public</b> playlists</li>
                 <li>Spotify only allows access to playlists <b>owned by a user</b></li>
                 <li>Spotify does not return info on Spotify-curated lists</li>
