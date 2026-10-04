@@ -157,11 +157,14 @@ The process is roughly:
 6. When GP .gig button in clicked, generate the XML and download
 
 ```
+# Install dependencies (uses pnpm)
+pnpm install
+
 # Run locally for development
-npm run dev
+pnpm run dev
 
 # Build static version
-npm run build
+pnpm run build
 ```
 
 
